@@ -16,7 +16,8 @@ public class Agent : MonoBehaviour
     private float distance;
     private bool isReady = true;
     private AudioSource shootingSound;
-    
+
+    private float health = 20f;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -24,7 +25,11 @@ public class Agent : MonoBehaviour
     }
     void Update()
     {
-        checkDistanceFromTarget();
+
+        if (health <= 0)
+            animator.Play("FallAndDie");
+        else
+            checkDistanceFromTarget();
         
     }
 
@@ -32,7 +37,7 @@ public class Agent : MonoBehaviour
     {
         distance = Vector3.Distance(gameObject.transform.position, target.transform.position);
         
-        if (distance < 30f)
+        if (distance < 15f)
         {
             animator.CrossFade("Firing",0.3f);
             lookOnTarget();
@@ -73,5 +78,12 @@ public class Agent : MonoBehaviour
         muzzleFlash.SetActive(true);
         yield return new WaitForSeconds(0.15f);
         muzzleFlash.SetActive(false);
+    }
+
+    public void takeDamage(float damage)
+    {
+        Debug.Log("Took damage, health:" + health);
+        health -= damage;
+        
     }
 }

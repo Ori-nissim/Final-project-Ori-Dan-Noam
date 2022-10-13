@@ -9,8 +9,10 @@ public class Gun : MonoBehaviour
     public Camera fpsCamera;
     public ParticleSystem muzzleFlash;
     public GameObject enviormentImpact;
-    private AudioSource shootingSound;
+    public GameObject humanImpact;
 
+    private AudioSource shootingSound;
+    private GameObject impactEffect;
 
     private void Awake()
     {
@@ -36,19 +38,23 @@ public class Gun : MonoBehaviour
         if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range))
         { 
 
-        Target target = hit.transform.GetComponent<Target>();
+        Agent target = hit.transform.GetComponent<Agent>();
 
-        Debug.Log("Shooting" + hit);
 
             if (target != null)
             {
-                Debug.Log("Target hit:" + target.name);
-                target.TakeDamage(damage);
+                target.takeDamage(damage);
             }
+                if (hit.transform.gameObject.tag == "Human")
+                    impactEffect = humanImpact;
+                else
+                    impactEffect = enviormentImpact;
 
-            GameObject hitFX = Instantiate(enviormentImpact, hit.point, Quaternion.LookRotation(hit.normal));
-            Destroy(hitFX, 2f);
+                GameObject hitFX = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                Destroy(hitFX, 2f);
+        
         }
+
     }
     void stopMuzzleFlash()
     {
