@@ -58,7 +58,7 @@ public class PortalToBank : MonoBehaviour
 
         animator.SetTrigger("StartFadeIn");
         */
-        yield return new WaitForSeconds(0);//delay of 3 seconds
+        yield return new WaitForSeconds(3);//delay of 3 seconds
         SceneManager.LoadScene(sceneIndex);//index of scene 2
     }
 }
