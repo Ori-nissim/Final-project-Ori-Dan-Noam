@@ -18,6 +18,8 @@ public class Agent : MonoBehaviour
     private AudioSource shootingSound;
 
     private float health = 20f;
+    private bool isAlive = true;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -26,10 +28,9 @@ public class Agent : MonoBehaviour
     void Update()
     {
 
-        if (health <= 0)
-            animator.Play("FallAndDie");
-        else
-            checkDistanceFromTarget();
+       
+       if (isAlive)
+        checkDistanceFromTarget();
         
     }
 
@@ -84,6 +85,11 @@ public class Agent : MonoBehaviour
     {
         Debug.Log("Took damage, health:" + health);
         health -= damage;
-        
+
+        if (health <= 0)
+        {
+            isAlive = false;
+            animator.Play("FallAndDie");
+        }
     }
 }
