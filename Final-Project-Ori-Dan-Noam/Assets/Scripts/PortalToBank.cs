@@ -9,6 +9,8 @@ using UnityEngine.UI;
 
 public class PortalToBank : MonoBehaviour
 {
+
+    public GameManager gameManager;
     public GameObject Eye;
     public Text Instruction;// text will be " press E to enter" 
    /* private void OnTriggerEnter(Collider other)
@@ -36,8 +38,8 @@ public class PortalToBank : MonoBehaviour
                 Instruction.gameObject.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E)) //press " E "
                 {
-                    StartCoroutine(StartSceneTransition(nextScenIndex));//start parallel execution of function 
-
+                    //StartCoroutine(StartSceneTransition(nextScenIndex));//start parallel execution of function 
+                    gameManager.firstSceneTransition();
                 }
             }
             else
@@ -58,7 +60,7 @@ public class PortalToBank : MonoBehaviour
 
         animator.SetTrigger("StartFadeIn");
         */
-        yield return new WaitForSeconds(3);//delay of 3 seconds
+        yield return new WaitForSeconds(0.8f);//delay of 3 seconds
         SceneManager.LoadScene(sceneIndex);//index of scene 2
     }
 }
