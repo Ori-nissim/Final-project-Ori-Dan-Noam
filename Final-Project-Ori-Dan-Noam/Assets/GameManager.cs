@@ -25,7 +25,8 @@ public class GameManager : MonoBehaviour
     public void updateGold(int amount)
     {
         goldCount += amount;
-        money.SetText(goldCount + "");
+       // money.SetText(goldCount + "");
+        gold.SetText(goldCount + "");
     }
 
     public void updateMoney(int amount)

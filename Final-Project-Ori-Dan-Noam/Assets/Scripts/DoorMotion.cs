@@ -16,13 +16,13 @@ public class DoorMotion : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        animator.SetBool("openSlidingDoorShop", true);
+        animator.SetBool("IsOpening", true);
         sound.PlayDelayed(0.6f);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        animator.SetBool("openSlidingDoorShop", false);
+        animator.SetBool("IsOpening", false);
         sound.PlayDelayed(0.6f);
     }
     // Update is called once per frame
