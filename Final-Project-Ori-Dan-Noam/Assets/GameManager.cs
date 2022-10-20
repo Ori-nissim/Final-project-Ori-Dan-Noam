@@ -22,9 +22,10 @@ public class GameManager : MonoBehaviour
         blackScreenAnimator = blackScreen.GetComponent<Animator>();
     }
     // Update is called once per frame
-    public void updateGold()
+    public void updateGold(int amount)
     {
-        
+        goldCount += amount;
+        money.SetText(goldCount + "");
     }
 
     public void updateMoney(int amount)

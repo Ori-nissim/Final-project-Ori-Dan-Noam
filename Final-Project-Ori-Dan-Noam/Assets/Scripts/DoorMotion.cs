@@ -11,6 +11,7 @@ public class DoorMotion : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         sound = GetComponent<AudioSource>();
+
     }
 
     private void OnTriggerEnter(Collider other)
