@@ -26,6 +26,7 @@ public class Anubis : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(Eye.transform.position, Eye.transform.forward, out hit))
         {
+            print(hit.transform.gameObject.tag);
             if (hit.transform.gameObject.tag == "Anubis")
             {
                 print("hit!!");

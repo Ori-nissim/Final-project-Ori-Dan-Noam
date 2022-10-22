@@ -22,7 +22,7 @@ public class PlayerCollisions : MonoBehaviour
         if (other.CompareTag("Gold"))
         {
             moneyPickup.Play();
-            gameManager.updateMoney(Random.Range(100, 1000));
+            gameManager.updateGold(Random.Range(100, 1000));
             Destroy(other.gameObject, 0.2f);
         }
     }
