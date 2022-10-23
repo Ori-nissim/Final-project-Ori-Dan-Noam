@@ -6,6 +6,7 @@ public class Gun : MonoBehaviour
     public float damage = 10f;
     public float range = 150f;
 
+    public GameManager gameManager;
     public Camera fpsCamera;
     public ParticleSystem muzzleFlash;
     public GameObject enviormentImpact;
@@ -23,6 +24,7 @@ public class Gun : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
+            gameManager.shotsHasBeenFired = true;
         }
     }
 

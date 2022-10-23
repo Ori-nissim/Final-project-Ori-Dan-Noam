@@ -90,6 +90,7 @@ public class Agent : MonoBehaviour
         {
             isAlive = false;
             animator.Play("FallAndDie");
+            Destroy(gameObject, 1f);
         }
     }
 }

@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private int moneyCount = 0;
     private int goldCount = 0;
 
+    public bool shotsHasBeenFired = false; // to signal bank NPC to run
     private
      void Awake()
     {
