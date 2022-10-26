@@ -44,13 +44,18 @@ public class GameManager : MonoBehaviour
 
         blackScreenAnimator.Play("Fade");
         StartCoroutine(StartSceneTransition(nextScenIndex));//start parallel execution of function 
-
+        Invoke("shotsFired", 1f);
     }
 
     IEnumerator StartSceneTransition(int sceneIndex)
     {
         
         yield return new WaitForSeconds(0.8f);
-        SceneManager.LoadScene(sceneIndex);//index of scene 2
+        SceneManager.LoadScene("Bank");//index of scene 2
+    }
+
+    private void shotsFired()
+    {
+        shotsHasBeenFired = true;
     }
 }
