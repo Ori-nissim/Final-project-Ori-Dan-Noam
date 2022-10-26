@@ -56,6 +56,9 @@ public class BankRobber : MonoBehaviour
 
     void Update()
     {
+        if (target == null)
+            target = player;
+
         if (!isEnemyInRange)
         {
             navMeshAgent.SetDestination(player.transform.position);

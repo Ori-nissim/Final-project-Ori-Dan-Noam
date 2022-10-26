@@ -16,13 +16,23 @@ public class GameManager : MonoBehaviour
     private int goldCount = 0;
 
     public bool shotsHasBeenFired = false; // to signal bank NPC to run
-    private
-     void Awake()
+
+    public static GameManager Instance;
+
+    void Awake()
     {
-        // start mission time - TODO 
         blackScreenAnimator = blackScreen.GetComponent<Animator>();
+
+        if (Instance == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
-    // Update is called once per frame
     public void updateGold(int amount)
     {
         goldCount += amount;
@@ -41,6 +51,8 @@ public class GameManager : MonoBehaviour
         int nextScenIndex = SceneManager.GetActiveScene().buildIndex;
 
         nextScenIndex = 1 - nextScenIndex;
+
+        GameManager.Instance.moneyCount = moneyCount;
 
         blackScreenAnimator.Play("Fade");
         StartCoroutine(StartSceneTransition(nextScenIndex));//start parallel execution of function 
