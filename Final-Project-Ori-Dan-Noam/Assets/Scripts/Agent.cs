@@ -9,7 +9,8 @@ public class Agent : MonoBehaviour
     public GameObject exitPoint;
     public GameObject projectile;
     public GameObject muzzleFlash;
-
+    public BankRobber bankRobber;
+    public BankRobber bankRobber2;
     public float velocity;
     public float timeBetweenShots = 2f;
     private Animator animator;
@@ -24,6 +25,8 @@ public class Agent : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         shootingSound = GetComponent<AudioSource>();
+        muzzleFlash.SetActive(false);
+
     }
     void Update()
     {
@@ -90,7 +93,18 @@ public class Agent : MonoBehaviour
         {
             isAlive = false;
             animator.Play("FallAndDie");
+            bankRobber.target = target;
+            bankRobber2.target = target;
             Destroy(gameObject, 1f);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "RobberBullet")
+        {
+            takeDamage(10);
+            print("Took damage from crew mate");
         }
     }
 }

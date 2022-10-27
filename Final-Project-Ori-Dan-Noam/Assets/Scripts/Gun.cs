@@ -38,10 +38,9 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
 
         if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range))
-        { 
-
+        {
         Agent target = hit.transform.GetComponent<Agent>();
-
+        
 
             if (target != null)
             {
