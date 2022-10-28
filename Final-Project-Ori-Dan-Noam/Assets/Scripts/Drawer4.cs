@@ -11,10 +11,10 @@ public class Drawer4 : MonoBehaviour
    // public GameObject CrossHairTouch;
     public GameObject Eye;
     public Text Instruction;
-    public Text Instruction1;
+    //public Text Instruction1;
     public Animator animator;
     private AudioSource sound;
-    public GameObject Bomb1;
+    //public GameObject Bomb1;
 
     // Start is called before the first frame update
     void Start()
@@ -56,12 +56,13 @@ public class Drawer4 : MonoBehaviour
                     animator.SetBool("Open", false);
                     sound.Play();
                 }
+                /*
                 if (Input.GetKeyDown(KeyCode.E)) //prass " E "
                 {
                     Bomb1.SetActive(false);
                     
                     sound.Play();
-                }
+                }*/
             }
             else
             {
@@ -70,7 +71,7 @@ public class Drawer4 : MonoBehaviour
                 //Instruction.gameObject.SetActive(false);
             }
         }
-        if (hit.transform.gameObject.tag == "Takeable")
+       /* if (hit.transform.gameObject.tag == "Takeable")
         {
 
            Instruction1.gameObject.SetActive(true);
@@ -80,7 +81,7 @@ public class Drawer4 : MonoBehaviour
             {
                 Instruction1.gameObject.SetActive(false);
             }
-           
+         */  
         
     }
 }
