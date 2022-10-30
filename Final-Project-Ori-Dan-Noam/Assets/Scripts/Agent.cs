@@ -41,7 +41,7 @@ public class Agent : MonoBehaviour
     {
         distance = Vector3.Distance(gameObject.transform.position, target.transform.position);
         
-        if (distance < 15f)
+        if (distance < 20f)
         {
             animator.CrossFade("Firing",0.3f);
             lookOnTarget();

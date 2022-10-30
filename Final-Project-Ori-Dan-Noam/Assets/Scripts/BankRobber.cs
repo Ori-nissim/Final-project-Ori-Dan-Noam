@@ -82,6 +82,11 @@ public class BankRobber : MonoBehaviour
             isEnemyInRange = false;
             target = player;
         }
+        /*if (Input.GetKey(KeyCode.C))
+        {
+            isEnemyInRange = true;
+            target = player;
+        }*/
     }
 
     IEnumerator shootWeapon() // create a projectile and fire it
