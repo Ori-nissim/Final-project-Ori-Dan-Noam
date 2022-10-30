@@ -16150,6 +16150,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Cop1 '
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0f0e44d8c40844b13b651290abad56cb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f0e44d8c40844b13b651290abad56cb, type: 3}
 --- !u!1 &705507993
@@ -16932,7 +16936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &770351424
 Transform:
   m_ObjectHideFlags: 0
@@ -42337,6 +42341,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cop2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0f0e44d8c40844b13b651290abad56cb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f0e44d8c40844b13b651290abad56cb, type: 3}
 --- !u!4 &1397865458 stripped
@@ -54362,7 +54370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1630536403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58036,8 +58044,6 @@ MonoBehaviour:
   exitPoint: {fileID: 938684341}
   projectile: {fileID: 1630536402}
   muzzleFlash: {fileID: 1021016444}
-  bankRobber: {fileID: 0}
-  bankRobber2: {fileID: 0}
   velocity: 0
   timeBetweenShots: 2
 --- !u!4 &1958720066 stripped
@@ -58359,8 +58365,6 @@ MonoBehaviour:
   exitPoint: {fileID: 788801715}
   projectile: {fileID: 1630536402}
   muzzleFlash: {fileID: 678481602}
-  bankRobber: {fileID: 0}
-  bankRobber2: {fileID: 0}
   velocity: 0
   timeBetweenShots: 2
 --- !u!1001 &1986432544

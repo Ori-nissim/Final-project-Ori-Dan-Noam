@@ -33,7 +33,7 @@ public class Bomb : MonoBehaviour
         RaycastHit hit1;
         if (Physics.Raycast(Eye.transform.position, Eye.transform.forward, out hit1))
         {
-            if (hit1.transform.gameObject.tag == "Takeable")
+            if (hit1.transform.gameObject.tag == "Bombable")
             {
                 Instruction1.gameObject.SetActive(true);
             }
