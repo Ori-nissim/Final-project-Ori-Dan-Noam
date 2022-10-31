@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
     public GameObject blackScreen;
     private Animator blackScreenAnimator;
 
-    private int moneyCount = 0;
-    private int goldCount = 0;
+    private int moneyCount = 2;
+    private int goldCount = 2;
 
     public bool shotsHasBeenFired = false; // to signal bank NPC to run
 
@@ -23,20 +23,31 @@ public class GameManager : MonoBehaviour
     {
         blackScreenAnimator = blackScreen.GetComponent<Animator>();
 
+
         if (Instance == null)
         {
-            DontDestroyOnLoad(gameObject);
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else if (Instance != this)
         {
             Destroy(gameObject);
         }
+        
+    }
+
+    public void showTeamSelection()
+    {
+        print("clicked");
+    }
+    private void Update()
+    {
+        //setCursorActive(true);
+
     }
     public void updateGold(int amount)
     {
         goldCount += amount;
-       // money.SetText(goldCount + "");
         gold.SetText(goldCount + "");
     }
 
@@ -46,6 +57,21 @@ public class GameManager : MonoBehaviour
         money.SetText(moneyCount + "");
     }
 
+    private void setCursorActive(bool state)
+    {
+        if (!state)
+        {
+            // lock and hide the cursor
+            UnityEngine.Cursor.visible = false;
+            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            // show cursor
+            UnityEngine.Cursor.visible = true;
+            UnityEngine.Cursor.lockState = CursorLockMode.Confined;
+        }
+    }   
     public void firstSceneTransition()
     {
         int nextScenIndex = SceneManager.GetActiveScene().buildIndex;
