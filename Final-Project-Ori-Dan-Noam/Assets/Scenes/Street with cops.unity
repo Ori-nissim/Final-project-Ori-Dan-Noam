@@ -16186,7 +16186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0f0e44d8c40844b13b651290abad56cb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects:
@@ -42401,7 +42401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0f0e44d8c40844b13b651290abad56cb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects:
@@ -57327,7 +57327,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909802760}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.991816, y: 9.66563, z: -33.548786}
+  m_LocalPosition: {x: -22.210217, y: 10.161317, z: -23.948788}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -59055,6 +59055,8 @@ MonoBehaviour:
   muzzleFlash: {fileID: 1331490570}
   enviormentImpact: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
   humanImpact: {fileID: 100002, guid: fc7f8379080d0a844ad699b91bfd56f0, type: 3}
+  robberMale: {fileID: 0}
+  robberFemale: {fileID: 0}
 --- !u!1001 &2067660826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64532,6 +64534,8 @@ MonoBehaviour:
   muzzleFlash: {fileID: 6546904277949160795}
   enviormentImpact: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
   humanImpact: {fileID: 0}
+  robberMale: {fileID: 0}
+  robberFemale: {fileID: 0}
 --- !u!82 &2391256246772210
 AudioSource:
   m_ObjectHideFlags: 0
