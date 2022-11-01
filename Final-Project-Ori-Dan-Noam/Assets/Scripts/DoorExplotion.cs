@@ -2,63 +2,84 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static Unity.Burst.Intrinsics.X86;
+using UnityEngine.SceneManagement;
 
 public class DoorExplotion : MonoBehaviour
 {
     public GameObject explosion;
-    Animator animator;
-    public Text Instruction;
+    Animator doorAnimator;
+    public Camera fpsCamera;
+
+    public Text instruction;
     private AudioSource sound;
-    // Start is called before the first frame update
+    private bool hasExploded = false;
     void Start()
     {
-        animator = GetComponent<Animator>();
+        doorAnimator = GetComponent<Animator>();
         sound = GetComponent<AudioSource>();
         
     }
-    /*void update()
+
+    private void Update()
     {
-        print("out");
-        if (Input.GetKeyDown(KeyCode.P)) //prass " P "
+        if (!hasExploded)
         {
-            print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-            animator.SetBool("Start", true);
-            animator.SetInteger("play1",1);
-            //sound.Play();
+            RaycastHit hit;
+
+            if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, 2))
+            {
+                if (hit.transform.tag == "Door")
+                {
+                    instruction.gameObject.SetActive(true);
+
+                    if (Input.GetKey(KeyCode.E))
+                    {
+                       
+                        doorAnimator.SetBool("Start", true);
+                        sound.PlayDelayed(2.8f);
+                        Invoke("stopInstructions", 3f);
+                    }
+                }
+
+            }
+            else
+                instruction.gameObject.SetActive(false);
+
         }
-    }*/
-    private void OnTriggerEnter(Collider other)
-    {
-        animator.SetBool("Start", true);
-     Instruction.gameObject.SetActive(true);
-        sound.PlayDelayed(5f);
-        //StartCoroutine(Explode());
-        StartCoroutine(TextDelay());
-        Instruction.gameObject.SetActive(false);
 
     }
 
-    IEnumerator TextDelay()
+    void stopInstructions()
     {
-        yield return new WaitForSeconds(2);
-        Instruction.gameObject.SetActive(false);
+        hasExploded = true;
     }
+    /* private void OnTriggerEnter(Collider other)
+     {
+         animator.SetBool("Start", true);
+         Instruction.gameObject.SetActive(true);
+         sound.PlayDelayed(5f);
+         //StartCoroutine(Explode());
+         StartCoroutine(TextDelay());
+         Instruction.gameObject.SetActive(false);
+
+     }
+
+     IEnumerator TextDelay()
+     {
+         yield return new WaitForSeconds(2);
+         Instruction.gameObject.SetActive(false);
+     }
+
+     */
     IEnumerator Explode()
     {
-        print("XXXXXXXXXXXXXXXXXXXXXXXXXXX");
-        Instruction.gameObject.SetActive(false);
-        yield return new WaitForSeconds(2);
+        instruction.gameObject.SetActive(false);
+        sound.Play();
+        yield return new WaitForSeconds(1);
         explosion.SetActive(true);
        
-        sound.Play();
         
     }
-    /* private void OnTriggerExit(Collider other)
-     {
-         animator.SetBool("IsOpening", false);
-         sound.PlayDelayed(0.6f);
-     }*/
-    // Update is called once per frame
-
+  
+    
 }

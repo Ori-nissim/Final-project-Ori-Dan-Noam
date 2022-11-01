@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        //setCursorActive(true);
+        setCursorActive(false);
 
     }
     public void updateGold(int amount)
@@ -82,13 +82,13 @@ public class GameManager : MonoBehaviour
 
         blackScreenAnimator.Play("Fade");
         StartCoroutine(StartSceneTransition(nextScenIndex));//start parallel execution of function 
-        Invoke("shotsFired", 1f);
+        //Invoke("shotsFired", 3f);
     }
 
     IEnumerator StartSceneTransition(int sceneIndex)
     {
         
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.25f);
         SceneManager.LoadScene("Bank");//index of scene 2
     }
 

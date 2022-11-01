@@ -31,7 +31,7 @@ public class PortalToBank : MonoBehaviour
 
 
         RaycastHit hit;
-        if (Physics.Raycast(Eye.transform.position, Eye.transform.forward, out hit))
+        if (Physics.Raycast(Eye.transform.position, Eye.transform.forward, out hit, 7))
         {
             if (hit.transform.gameObject.tag == "Enterable")
             {

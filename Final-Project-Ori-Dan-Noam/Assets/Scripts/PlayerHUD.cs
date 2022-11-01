@@ -6,20 +6,19 @@ public class PlayerHUD : MonoBehaviour
 {
     public GameObject damageTaken;
     public TextMeshProUGUI healthCounter;
-    private Animation dmgTakenAnimation;
+    private Animator dmgTakenAnimation;
     private float health = 100;
 
     private void Awake()
     {
-        dmgTakenAnimation = damageTaken.GetComponent<Animation>();
+        dmgTakenAnimation = damageTaken.GetComponent<Animator>();
     }
     private void OnCollisionEnter(Collision collision)
     {
 
         if(collision.gameObject.tag == "EnemyBullet")
         {
-            damageTaken.SetActive(true);
-            dmgTakenAnimation.Play();
+            dmgTakenAnimation.Play("dmgTaken");
 
             health -= 10;
             healthCounter.SetText(health + "");

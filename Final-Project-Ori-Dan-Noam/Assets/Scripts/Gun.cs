@@ -12,6 +12,9 @@ public class Gun : MonoBehaviour
     public GameObject enviormentImpact;
     public GameObject humanImpact;
 
+    public BankRobber robberMale;
+    public BankRobber robberFemale;  
+
     private AudioSource shootingSound;
     private GameObject impactEffect;
 
@@ -46,8 +49,12 @@ public class Gun : MonoBehaviour
             {
                 target.takeDamage(damage);
             }
-                if (hit.transform.gameObject.tag == "Human")
+                if (hit.transform.gameObject.tag == "Agent")
+                { 
                     impactEffect = humanImpact;
+                    robberMale.target = hit.transform.gameObject;
+                    robberFemale.target = hit.transform.gameObject;
+                }
                 else
                     impactEffect = enviormentImpact;
 

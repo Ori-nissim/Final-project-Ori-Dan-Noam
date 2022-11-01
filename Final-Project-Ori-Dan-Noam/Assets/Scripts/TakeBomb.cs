@@ -7,72 +7,45 @@ using static Unity.Burst.Intrinsics.X86;
 
 public class TakeBomb : MonoBehaviour
 {
-    public GameObject CrossHair;
-   // public GameObject CrossHairTouch;
-    public GameObject Eye;
-    public Text Instruction;
-   // public Text Instruction1;
-    //public Animator animator;
-    private AudioSource sound;
-    public GameObject Bomb1;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        sound = GetComponent<AudioSource>();
-        
-    }
+    public Camera fpsCamera;
+    public Text instruction;
+    public GameObject bomb;
 
-    // Update is called once per frame
-    void Update()
+    private bool isBombObtained = false;
+    private void Update()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(Eye.transform.position, Eye.transform.forward, out hit))
+        if (!isBombObtained)
         {
-            if (hit.transform.gameObject.tag == "Takeable")
-            {
-                Instruction.gameObject.SetActive(true);
+            RaycastHit hit;
 
-                if (hit.transform.gameObject == this.gameObject)//this.gameObject is Script Object
+            if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, 2))
+            {
+                if (hit.transform.tag == "Takeable")
                 {
-                    CrossHair.SetActive(false);
-                    // CrossHairTouch.SetActive(true);
-                    // Instruction.gameObject.SetActive(true);
-                    //
-                    //Instruction.gameObject.tag == Openable;
-                    //
-                    if (Input.GetKeyDown(KeyCode.E)) //prass " E "
+                    instruction.gameObject.SetActive(true);
+
+                    if (Input.GetKey(KeyCode.E))
                     {
-                        Bomb1.SetActive(false);
-                        sound.Play();
-                        Instruction.gameObject.SetActive(false);
+                        bomb.SetActive(false);
+                        instruction.text = " Bomb Obtained! Get to the Vault door!";
+                        Invoke("BombObtained", 3f);  // show instruction for 3 second and disappear
                     }
-
                 }
-                else
-                {
-                CrossHair.SetActive(true);
-                //  CrossHairTouch.SetActive(false);
-                //Instruction.gameObject.SetActive(false);
-                }
-            }
-            
-            else
-            {
-                Instruction.gameObject.SetActive(false);
-            }
-        }
-       /* if (hit.transform.gameObject.tag == "Takeable")
-        {
 
-           Instruction1.gameObject.SetActive(true);
-            //print("BOMB!!!!!!!!!!!!!!!!");
-        }
-            else
-            {
-                Instruction1.gameObject.SetActive(false);
             }
-         */  
-        
+            else
+                instruction.gameObject.SetActive(false);
+
+        }
+
     }
+    private void BombObtained()
+    {
+        isBombObtained = true;
+        instruction.gameObject.SetActive(false);
+
+    }
+
+
 }

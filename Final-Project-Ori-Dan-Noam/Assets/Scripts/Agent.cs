@@ -11,8 +11,8 @@ public class Agent : MonoBehaviour
     public GameObject muzzleFlash;
     public BankRobber bankRobber;
     public BankRobber bankRobber2;
-    public float velocity;
-    public float timeBetweenShots = 2f;
+    public float velocity = 200;
+    public float timeBetweenShots = 1f;
     private Animator animator;
     private float distance;
     private bool isReady = true;
@@ -41,7 +41,7 @@ public class Agent : MonoBehaviour
     {
         distance = Vector3.Distance(gameObject.transform.position, target.transform.position);
         
-        if (distance < 20f)
+        if (distance < 30f)
         {
             animator.CrossFade("Firing",0.3f);
             lookOnTarget();
@@ -93,8 +93,8 @@ public class Agent : MonoBehaviour
         {
             isAlive = false;
             animator.Play("FallAndDie");
-            bankRobber.target = target;
-            bankRobber2.target = target;
+            //bankRobber.target = target;
+            //bankRobber2.target = target;
             Destroy(gameObject, 1f);
         }
     }

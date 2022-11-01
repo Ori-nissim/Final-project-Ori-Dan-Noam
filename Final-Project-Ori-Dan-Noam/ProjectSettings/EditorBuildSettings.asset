@@ -11,5 +11,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Bank.unity
     guid: 0b26a7451633b1f46a1f2aeb508cdf19
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 2b66b10b044507744a22beadbb6fe1c1
+  - enabled: 1
+    path: Assets/Scenes/Valut.unity
+    guid: 11246346d80274e3796bc26bc779e41b
+  - enabled: 1
+    path: Assets/Scenes/Street with cops.unity
+    guid: 43fd6dca62081b74e992729478c8eca8
+  - enabled: 1
+    path: Assets/Scenes/Street.unity
+    guid: c554977904c654a57b3d60390e728668
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}

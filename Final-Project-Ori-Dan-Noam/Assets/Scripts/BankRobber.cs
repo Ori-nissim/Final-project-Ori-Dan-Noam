@@ -31,7 +31,16 @@ public class BankRobber : MonoBehaviour
         muzzleFlash.SetActive(false);
         target = player;
     }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Agent")
+        {
+            isEnemyInRange = true;
+            target = other.gameObject;
+            animator.Play("Shooting");
 
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
        
@@ -44,19 +53,19 @@ public class BankRobber : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Agent")
-        {
-            isEnemyInRange = false;
-            target = player;
+    //private void OnTriggerExit(Collider other)
+    //{
+     //   if (other.gameObject.tag == "Agent")
+       // {
+      //      isEnemyInRange = false;
+      //      target = player;
 
-        }
-    }
+    //    }
+  //  }
 
     void Update()
     {
-        if (target == null)
+       if (target == null)
             target = player;
 
         if (!isEnemyInRange)
@@ -82,11 +91,7 @@ public class BankRobber : MonoBehaviour
             isEnemyInRange = false;
             target = player;
         }
-        /*if (Input.GetKey(KeyCode.C))
-        {
-            isEnemyInRange = true;
-            target = player;
-        }*/
+        
     }
 
     IEnumerator shootWeapon() // create a projectile and fire it
