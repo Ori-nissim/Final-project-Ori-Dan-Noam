@@ -15,6 +15,18 @@ public class MainMenu : MonoBehaviour
 
     }
 
+    public void startMainMenu()
+    {
+
+        int nextScenIndex = SceneManager.GetActiveScene().buildIndex;
+
+        nextScenIndex = 1 - nextScenIndex;
+
+        SceneManager.LoadScene("MainMenu");//index of scene 2
+
+    }
+
+
     public void startPolice()
     {
         // TODO
