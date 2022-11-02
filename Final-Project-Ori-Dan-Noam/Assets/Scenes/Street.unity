@@ -7742,7 +7742,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1787955923
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9117,6 +9117,8 @@ MonoBehaviour:
   muzzleFlash: {fileID: 6546904277949160795}
   enviormentImpact: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
   humanImpact: {fileID: 0}
+  robberMale: {fileID: 0}
+  robberFemale: {fileID: 0}
 --- !u!82 &2391256246772210
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15800,7 +15802,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8045781320118997740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.418401, y: -9.355448, z: 48}
+  m_LocalPosition: {x: -19, y: -9.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
