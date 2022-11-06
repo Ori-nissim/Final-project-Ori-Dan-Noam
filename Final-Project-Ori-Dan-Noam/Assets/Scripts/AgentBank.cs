@@ -20,11 +20,12 @@ public class AgentBank : MonoBehaviour
     private AudioSource shootingSound;
 
 
+
     private float health = 20f;
     private bool isAlive = true;
-    private bool isWaiting = true;
+   // private bool isWaiting = true;
     public GameManager gameManager;
-    private bool flag = false;
+    public bool flag = false;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -38,7 +39,8 @@ public class AgentBank : MonoBehaviour
        
        if (isAlive)
         checkDistanceFromTarget();
-        
+
+            
     }
 
     private void checkDistanceFromTarget()
@@ -47,8 +49,6 @@ public class AgentBank : MonoBehaviour
         
         if (distance < 30f)
         {
-            
-
             if(flag==true)
             {
                 animator.CrossFade("Firing", 0.3f);
@@ -57,17 +57,16 @@ public class AgentBank : MonoBehaviour
            
             if(isReady)
             {
-                if (isWaiting)
-                {
+               
                     if (gameManager.shotsHasBeenFired)
                     {
                         StartCoroutine("shootWeapon");
 
-                        isWaiting = false;
+                        //isWaiting = false;
                         flag = true;
 
                     }
-                }
+                
             }
                 
         }
@@ -114,11 +113,13 @@ public class AgentBank : MonoBehaviour
 
         if (health <= 0)
         {
+            print("XXX\nXXX\nXXX");
             isAlive = false;
             animator.Play("FallAndDie");
+            
             //bankRobber.target = target;
             //bankRobber2.target = target;
-            Destroy(gameObject, 1f);
+            Destroy(gameObject,3f);
         }
     }
 
