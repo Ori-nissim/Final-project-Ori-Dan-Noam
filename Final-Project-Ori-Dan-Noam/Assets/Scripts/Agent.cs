@@ -104,7 +104,7 @@ public class Agent : MonoBehaviour
         if (other.gameObject.tag == "RobberBullet")
         {
             takeDamage(10);
-            print("Took damage from crew mate");
+            print("Took damage from crew mate\n\n");
         }
     }
 }

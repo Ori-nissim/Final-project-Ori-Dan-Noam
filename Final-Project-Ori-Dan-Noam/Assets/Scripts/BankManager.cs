@@ -10,6 +10,8 @@ public class BankManager : MonoBehaviour
     public GameObject blackScreen;
     private Animator blackScreenAnimator;
 
+    public GameManager gameManager;
+
     private void Awake()
     {
         alarmsSound = GetComponent<AudioSource>();
@@ -19,11 +21,12 @@ public class BankManager : MonoBehaviour
         blackScreenAnimator.Play("Fade");
         gameManager.updateMoney( 300 );
     }
-    void Start()
+    void Update()
     {
         
         Invoke("startAlarms", 6f);
     }
+    
 
     // Update is called once per frame
 
