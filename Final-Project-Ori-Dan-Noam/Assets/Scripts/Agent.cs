@@ -18,7 +18,7 @@ public class Agent : MonoBehaviour
     private bool isReady = true;
     private AudioSource shootingSound;
 
-    private float health = 20f;
+    private float health = 50f;
     private bool isAlive = true;
 
     private void Awake()

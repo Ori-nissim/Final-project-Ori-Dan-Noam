@@ -16,13 +16,13 @@ public class PlayerCollisions : MonoBehaviour
         if (other.CompareTag("Money"))
         {
             moneyPickup.Play();
-            gameManager.updateMoney(Random.Range(100,1000));
+            gameManager.updateMoney(100);
             Destroy(other.gameObject, 0.2f);
         }
         if (other.CompareTag("Gold"))
         {
             moneyPickup.Play();
-            gameManager.updateGold(Random.Range(100, 1000));
+            gameManager.updateGold(1);
             Destroy(other.gameObject, 0.2f);
         }
     }

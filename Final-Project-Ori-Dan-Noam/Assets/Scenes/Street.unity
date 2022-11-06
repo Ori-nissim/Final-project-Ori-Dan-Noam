@@ -1350,6 +1350,8 @@ MonoBehaviour:
   gold: {fileID: 113751306}
   money: {fileID: 1740706388}
   blackScreen: {fileID: 792729251}
+  moneyCount: 0
+  goldCount: 0
   shotsHasBeenFired: 0
 --- !u!4 &259252766
 Transform:

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 public class PlayerHUD : MonoBehaviour
 {
@@ -12,12 +13,14 @@ public class PlayerHUD : MonoBehaviour
     private void Awake()
     {
         dmgTakenAnimation = damageTaken.GetComponent<Animator>();
+        
     }
     private void OnCollisionEnter(Collision collision)
     {
 
         if(collision.gameObject.tag == "EnemyBullet")
         {
+            print("player hit");
             dmgTakenAnimation.Play("dmgTaken");
 
             health -= 10;

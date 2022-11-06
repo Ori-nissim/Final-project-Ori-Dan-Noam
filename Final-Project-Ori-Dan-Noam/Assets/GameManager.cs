@@ -12,27 +12,15 @@ public class GameManager : MonoBehaviour
     public GameObject blackScreen;
     private Animator blackScreenAnimator;
 
-    private int moneyCount = 2;
-    private int goldCount = 2;
+    public int moneyCount;
+    public int goldCount;
 
     public bool shotsHasBeenFired = false; // to signal bank NPC to run
 
-    public static GameManager Instance;
 
     void Awake()
     {
         blackScreenAnimator = blackScreen.GetComponent<Animator>();
-
-
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-        }
         
     }
 
@@ -47,6 +35,7 @@ public class GameManager : MonoBehaviour
     }
     public void updateGold(int amount)
     {
+        
         goldCount += amount;
         gold.SetText(goldCount + "");
     }
@@ -78,7 +67,7 @@ public class GameManager : MonoBehaviour
 
         nextScenIndex = 1 - nextScenIndex;
 
-        GameManager.Instance.moneyCount = moneyCount;
+
 
         blackScreenAnimator.Play("Fade");
         StartCoroutine(StartSceneTransition(nextScenIndex));//start parallel execution of function 
@@ -87,7 +76,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartSceneTransition(int sceneIndex)
     {
-        
+
         yield return new WaitForSeconds(0.25f);
         SceneManager.LoadScene("Bank");//index of scene 2
     }
