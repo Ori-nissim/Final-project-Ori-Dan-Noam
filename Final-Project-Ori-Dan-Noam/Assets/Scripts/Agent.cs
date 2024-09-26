@@ -9,27 +9,31 @@ public class Agent : MonoBehaviour
     public GameObject exitPoint;
     public GameObject projectile;
     public GameObject muzzleFlash;
-
-    public float velocity;
-    public float timeBetweenShots = 2f;
+    public BankRobber bankRobber;
+    public BankRobber bankRobber2;
+    public float velocity = 200;
+    public float timeBetweenShots = 1f;
     private Animator animator;
     private float distance;
     private bool isReady = true;
     private AudioSource shootingSound;
 
-    private float health = 20f;
+    private float health = 50f;
+    private bool isAlive = true;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
         shootingSound = GetComponent<AudioSource>();
+        muzzleFlash.SetActive(false);
+
     }
     void Update()
     {
 
-        if (health <= 0)
-            animator.Play("FallAndDie");
-        else
-            checkDistanceFromTarget();
+       
+       if (isAlive)
+        checkDistanceFromTarget();
         
     }
 
@@ -37,7 +41,7 @@ public class Agent : MonoBehaviour
     {
         distance = Vector3.Distance(gameObject.transform.position, target.transform.position);
         
-        if (distance < 15f)
+        if (distance < 30f)
         {
             animator.CrossFade("Firing",0.3f);
             lookOnTarget();
@@ -84,6 +88,23 @@ public class Agent : MonoBehaviour
     {
         Debug.Log("Took damage, health:" + health);
         health -= damage;
-        
+
+        if (health <= 0)
+        {
+            isAlive = false;
+            animator.Play("FallAndDie");
+            //bankRobber.target = target;
+            //bankRobber2.target = target;
+            Destroy(gameObject, 1f);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "RobberBullet")
+        {
+            takeDamage(10);
+            print("Took damage from crew mate\n\n");
+        }
     }
 }

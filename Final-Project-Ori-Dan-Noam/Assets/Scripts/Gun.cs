@@ -6,10 +6,14 @@ public class Gun : MonoBehaviour
     public float damage = 10f;
     public float range = 150f;
 
+    public GameManager gameManager;
     public Camera fpsCamera;
     public ParticleSystem muzzleFlash;
     public GameObject enviormentImpact;
     public GameObject humanImpact;
+
+    public BankRobber robberMale;
+    public BankRobber robberFemale;  
 
     private AudioSource shootingSound;
     private GameObject impactEffect;
@@ -23,6 +27,7 @@ public class Gun : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
+            gameManager.shotsHasBeenFired = true;
         }
     }
 
@@ -36,17 +41,20 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
 
         if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range))
-        { 
-
+        {
         Agent target = hit.transform.GetComponent<Agent>();
-
+        
 
             if (target != null)
             {
                 target.takeDamage(damage);
             }
-                if (hit.transform.gameObject.tag == "Human")
+                if (hit.transform.gameObject.tag == "Agent")
+                { 
                     impactEffect = humanImpact;
+                    robberMale.target = hit.transform.gameObject;
+                    robberFemale.target = hit.transform.gameObject;
+                }
                 else
                     impactEffect = enviormentImpact;
 
